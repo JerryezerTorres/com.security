@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template_fragments/head :: head"></head>
+<title>Home</title>
+
+<body>
+	<div th:replace="template_fragments/navbar :: navbar"></div>
+
+	<div class="container-fluid mt-5">
+		<div class=container>
+
+			<a class="btn btn-success btn-sm" th:href="@{/views/user/userList}"
+				th:text="'Lista de Usuario'" tittle="Lista de Usuarios"> </a>
+			
+
+		</div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+</body>
+</html>

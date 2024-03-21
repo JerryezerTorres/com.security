@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template_fragments/head :: head"></head>
+<title>Home</title>
+
+<body>
+	<div th:replace="template_fragments/navbar :: navbar"></div>
+
+	<div class="container">
+		<!-- 	<div class="row"> -->
+		<div class="col-12 mt-3 ">
+			<h1 class="display-2 text-center "><strong>!Tu mascota merece</strong></h1>
+			<h1 class="display-2  text-center"><strong>ser mimada!</strong></h1>
+		</div>
+		<div class="container mt-5">
+	
+				<div class="col-12 mt-5 d-flex justify-content-center">
+					<a class="btn btn-primary btn-lg rounded-pill" th:href="@{/views/service/bookAppointment}" role="button">Reserva tu cita ahora</a> 
+				</div>
+
+				<div class="row mt-5">
+				<div class="col-3">
+					<img th:src="@{/images/img1.jpg}" width="500"
+						height="500" class="img-fluid" alt="Imagen de Inicio">	
+				</div>
+				<div class="col-3">
+					<img th:src="@{/images/img2.jpg}" width="500"
+						height="500"class="img-fluid" alt="Imagen de Inicio">	
+				</div>
+				
+				<div class="col-3">
+					<img th:src="@{/images/img4.png}" width="500"
+						height="500"class="img-fluid" alt="Imagen de Inicio">	
+				</div>
+				<div class="col-3">
+					<img th:src="@{/images/img7.jpg}" width="246"
+						height="200" class="img-fluid" alt="Imagen de Inicio">	
+				</div>				
+			</div>
+		</div>
+	</div>
+	
+ 	 <div class="container mt-5">
+	 <div class="row">
+	 <div class="col-3"></div>
+		<div class="col-6 text-center">
+		<hr>
+			<h3 class="display-5 text-center"><strong>DogHouse</strong></h3>
+			<p class="lead mt-3">En Dog House, nos dedicamos a realzar la
+						belleza de tus mascotas con productos de grooming de la más alta
+						calidad. Nuestra pasión por los animales se refleja en cada
+						producto que ofrecemos, desde champús y acondicionadores hasta
+						accesorios de moda. Brindamos soluciones de grooming que no solo
+						resaltan la apariencia, sino que también promueven la salud y el
+						bienestar de tus queridos amigos peludos. Descubre la excelencia
+						en cuidado animal con Dog House.</p>		
+			<hr>
+		</div>
+		<div class="col-3"></div>
+	</div> 
+	</div> 
+	
+<!--  	<div class="container mt-5">
+	<div class="">
+		<h4 class="text-center display-5"><strong>Cómo llegar:</strong></h4>
+	</div>
+	<div class="container mt-5">
+		<div class="row">
+		<div class="col-3">
+					<img th:src="@{/images/img1.jpg}" width="500"
+						height="500" class="img-fluid" alt="Imagen de Inicio">	
+				</div>
+				<div class="col-3">
+					<img th:src="@{/images/img2.jpg}" width="500"
+						height="500"class="img-fluid" alt="Imagen de Inicio">	
+				</div>
+				
+				<div class="col-3">
+					<img th:src="@{/images/img4.png}" width="500"
+						height="500"class="img-fluid" alt="Imagen de Inicio">	
+				</div>
+				<div class="col-3">
+					<img th:src="@{/images/img7.jpg}" width="246"
+						height="200" class="img-fluid" alt="Imagen de Inicio">	
+				</div>				
+		</div>
+	</div>
+	</div>  -->
+			<div class="row ">
+		<hr class="mt-5">
+			<div class="col=12 mt-5 mb-5">
+				<h3 class="text-muted text-center">¿Cómo Llegar?</h3>
+			</div>
+			
+			<div class="row">
+			<div class="col-2"></div>
+			<div class="col-8 text-center">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1891.9454634881859!2d-66.87644933947493!3d18.488599175031652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c02e935a3dd8a8b%3A0xccd48a6b05e98f21!2sPlanta%20Tratamiento%20AAA!5e0!3m2!1ses-419!2spr!4v1643811513717!5m2!1ses-419!2spr" width="900" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>					
+			</div>
+			
+			</div>
+			<div class="col-2"></div>			
+		</div>
+
+
+	 <div class="container-fluid mt-5">
+		<div th:replace="template_fragments/footer :: footer"></div>	
+	 </div>
+	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<div th:fragment="navbar">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark  ">
+		<div class="container">
+			<a class="navbar-brand" th:href="@{/}"> <img
+				th:src="@{/images/logo.jpg}" class="float-left rounded-circle"
+				alt="Logo" width="50" height="">
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/}">Inicio</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/views/user/login}">Login</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Registrarse </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" th:href="@{/views/user/create}">Registrar a Usuario</a></li>
+							<li><a class="dropdown-item" th:href="@{/views/pet/create}">Registrar Mascota</a></li>
+							
+						</ul></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/views/user/create}">Registrarse</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/views/service/aboutUs}">Sobre Nosotros</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/views/admin/admin}">admin</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Salir</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</div>

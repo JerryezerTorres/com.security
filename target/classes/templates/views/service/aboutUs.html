@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template_fragments/head :: head"></head>
+<title>Home</title>
+
+<!-- direccion de wix para las ideas -->
+<!-- https://www.wix.com/website-template/view/html/3144?originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fall%2F5&tpClick=view_button&esi=444a2f9e-c10e-4710-848b-c579d557148b 
+ -->
+<body>
+	<div th:replace="template_fragments/navbar :: navbar"></div>
+
+	<div class="container-fluid mt-5">
+		<div class=container>
+			<div class="row">
+				<div class="col-6">
+				<p>Nosotros</p>
+				<p class="lead mt-3">En Dog House, nos dedicamos a realzar la
+						belleza de tus mascotas con productos de grooming de la más alta
+						calidad. Nuestra pasión por los animales se refleja en cada
+						producto que ofrecemos, desde champús y acondicionadores hasta
+						accesorios de moda. Brindamos soluciones de grooming que no solo
+						resaltan la apariencia, sino que también promueven la salud y el
+						bienestar de tus queridos amigos peludos. Descubre la excelencia
+						en cuidado animal con Dog House.</p>
+			<!-- 		<div class="d-flex justify-content-center">
+						<a class="btn btn-primary  justify-content-md-center" th:href="@{/views/service/service}">Ver Servicios</a>
+					</div> -->
+				</div>
+				<div class="col-6">
+					 <img th:src="@{/images/groomer3.jpg}" class="img-fluid" alt="Imagen de Inicio" width="700" height="800"> 
+				</div>
+			</div>
+		</div>
+		<div th:replace="template_fragments/footer :: footer"></div>
+		
+	</div>
+	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+</body>
+</html>
