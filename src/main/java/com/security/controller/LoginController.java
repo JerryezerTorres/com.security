@@ -1,17 +1,19 @@
 package com.security.controller;
 
-import javax.validation.Valid;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.security.entity.User;
 import com.security.service.IUserService;
@@ -19,60 +21,49 @@ import com.security.service.IUserService;
 @Controller
 @RequestMapping("/views/user")
 public class LoginController {
-	
-	
-	
+
 	@Autowired
 	private IUserService userService;
-	
 
-	
-	
+	@Autowired(required = true)
+	private AuthenticationManager authenticationManager;
+
 	@GetMapping("/login")
 	public String showLoginForm(Model model) {
 		model.addAttribute("title", "Login");
 		model.addAttribute("user", new User());
-	System.out.println("formulario login");
-		return"/views/user/login";
-		
-	}
-	
-/*	   @PostMapping("/login")
-	    public String processLogin() {
-		  
-	        return "redirect:/";
-	    }*/
-	
-/*    @PostMapping("/login")
-    public String processLogin(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {   	
-        if (bindingResult.hasErrors()) {
 
-        	System.out.println( "1 + " + user.getUserName());
-            return "/views/user/login";
-        }
-    
-        if (user.getUserName().equals("userName") && user.getPassword().equals("password")) {
-        	System.out.println( "2 + " + user.getUserName());
-            return "redirect:/"; 
-        } else {
-        	System.out.println("Error");
-            return "redirect:/login?error"; 
-        }
-    }*/
-    
-    
-	    @GetMapping("/logout")
-	    public String logout() {
-	        // Aquí puedes realizar la lógica de logout si es necesario
-	    	System.out.println( "estoy fuera");
-	        return "redirect:/login?logout"; // Redirige de vuelta al formulario de inicio de sesión con un mensaje de logout exitoso
-	    }
-    
-/*    @GetMapping("/logout")
-    public String logout() {
-        // Aquí puedes realizar la lógica de logout si es necesario
-        return "redirect:/login?logout"; // Redirige de vuelta al formulario de inicio de sesión con un mensaje de logout exitoso
-    }*/
+		return "/views/user/login";
+
+	}
+
+	@PostMapping("/login")
+	public String processLogin(User user) {
+		
+		Authentication authentication = new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword());
+		Authentication authenticated = authenticationManager.authenticate(authentication);
+		
+		
 	
+		SecurityContextHolder.getContext().setAuthentication(authenticated);
+		System.out.println(user.getUserName());
+		System.out.println(user.getPassword());
+		System.out.println("Esta autenticado: " + authenticated.isAuthenticated());
+		System.out.println("Esta autenticado: " + user.toString());
+
+		return "redirect:/";
+	}
+
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
 	
+		// Invalidar la sesión y limpiar la cookie de autenticación
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null) {
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		
+		}
+		
+		return "redirect:/"; // Redirige a la página de login con un mensaje de logout exitoso
+	}
 }

@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
+//import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
+//import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,7 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-/*import org.springframework.security.core.GrantedAuthority;*/
+//import org.springframework.security.core.GrantedAuthority;
 
 @Table(name="user")
 @Entity
@@ -42,6 +42,27 @@ public class User implements Serializable {
 
 	
 	
+	public User() {
+		super();
+	}
+
+	public User(Long id, String name, String lastName, String email, String direction, String telephone,
+			String userName, String password, String image, boolean enabled, String roles, List<Pet> pet) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.lastName = lastName;
+		this.email = email;
+		this.direction = direction;
+		this.telephone = telephone;
+		this.userName = userName;
+		this.password = password;
+		this.image = image;
+		this.enabled = enabled;
+		this.roles = roles;
+		this.pet = pet;
+	}
+
 	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
 	private List<Pet> pet;
 

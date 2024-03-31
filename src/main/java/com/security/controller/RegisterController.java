@@ -29,9 +29,7 @@ public class RegisterController {
 
 	@GetMapping("/create")
 	public String create(Model model) {
-
 		User user = new User();
-
 		model.addAttribute("title", "Registrarse");
 		model.addAttribute("user", user);
 
@@ -52,62 +50,49 @@ public class RegisterController {
 		return "redirect:/";
 
 	}
-	
+
 	@GetMapping("/edit/{id}")
 	public String edit(@PathVariable("id") Long id, RedirectAttributes attribute, Model model) {
 		Optional<User> user = null;
-
 		if (id > 0) {
 			user = userService.findById(id);
-			
 			if (user == null) {
 				attribute.addFlashAttribute("error", "El id no exixte");
 				System.out.println("Id no existe");
 				return "redirect:/views/user/home";
-
 			}
-
 		} else {
 			attribute.addFlashAttribute("error", "Problemas con el id");
 			System.out.println("3" + user);
 			return "redirect:/views/user/home";
-
 		}
-
 		model.addAttribute("user", user);
 		System.out.println(user);
 		return "/views/user/create";
 
 	}
-	
+
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable("id") Long id, RedirectAttributes attribute ) {
-		
+	public String delete(@PathVariable("id") Long id, RedirectAttributes attribute) {
 		Optional<User> user = null;
-		
-		if(id>0) {
-			user=userService.findById(id);
-			
-			if(user == null) {
+		if (id > 0) {
+			user = userService.findById(id);
+			if (user == null) {
 				System.out.println("null.");
 				attribute.addFlashAttribute("error", "ATENCION: El id de la persona no existe.");
 				return "redirect:/views/user/userList";
 			}
-		}else {
+		} else {
 			System.out.println("ERROR: Error con id de la persona.");
 			attribute.addFlashAttribute("error", "ATENCION: Error con el id de la persona.");
 			return "redirect:/views/persona/";
-		
 		}
-				
 		userService.delete(id);
 		System.out.println("Prueba " + id + " borrado exitosamente.");
 		attribute.addFlashAttribute("warning", "Registro eliminado exitosamente.");
-		
+
 		return "redirect:/views/user/userList";
-		
+
 	}
-
-
 
 }
