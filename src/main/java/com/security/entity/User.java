@@ -1,24 +1,20 @@
 package com.security.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 import javax.persistence.CascadeType;
-//import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-//import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//import org.springframework.security.core.GrantedAuthority;
+
 
 @Table(name="user")
 @Entity
@@ -37,6 +33,9 @@ public class User implements Serializable {
 	private String userName;
 	private String password;
 	private String image;
+	
+	
+	@Column(columnDefinition = "TINYINT(1)")
 	private boolean enabled;
 	private String roles;
 
@@ -161,6 +160,22 @@ public class User implements Serializable {
 				+ ", image=" + image + ", enabled=" + enabled + ", roles=" + roles + ", pet=" + pet + "]";
 	}
 
+	
+//	@Transient
+//    private static PasswordEncoder passwordEncoder;
+//
+//    @Autowired
+//    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+//        User.passwordEncoder = passwordEncoder;
+//    }
+//
+//    public static User createUser(String username, String password) {
+//        User user = new User();
+//        user.setUserName(username);
+//        user.setPassword(passwordEncoder.encode(password));
+//        // Otros campos y configuraciones necesarios
+//        return user;
+//    }
 
 
 	

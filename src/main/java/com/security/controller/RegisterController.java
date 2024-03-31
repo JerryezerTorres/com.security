@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.security.entity.User;
@@ -26,12 +24,16 @@ public class RegisterController {
 
 	@Autowired
 	private IUserService userService;
+	
+	
 
 	@GetMapping("/create")
 	public String create(Model model) {
 		User user = new User();
 		model.addAttribute("title", "Registrarse");
+		
 		model.addAttribute("user", user);
+		System.out.println("metodo create " + user);
 
 		return "/views/user/create";
 	}
@@ -39,12 +41,17 @@ public class RegisterController {
 	@PostMapping("/save")
 	public String save(@Valid @ModelAttribute User user, BindingResult result, Model model,
 			RedirectAttributes attribute) {
+		System.out.println("metodo save " + user);
 		// , @RequestParam("file") MultipartFile imagen
 
 		if (result.hasErrors()) {
+			System.out.println("metodo save 2 " + user.toString());
 			model.addAttribute("user", user);
+			
 			return "/views/user/create";
+			
 		}
+		
 		userService.save(user);
 
 		return "redirect:/";

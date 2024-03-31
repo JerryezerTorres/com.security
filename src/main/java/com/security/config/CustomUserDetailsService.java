@@ -20,33 +20,28 @@ import com.security.service.IUserService;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-	    @Autowired
-	    private UserRepository userRepository;
-	    
-	    @Autowired
-	    private IUserService userService;
-	      
-	    @Override
-	    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-	    	User user = userRepository.findByUserName(userName);
-	        if (user == null) {
-	            throw new UsernameNotFoundException("User not found with username: " + userName);
-	        }
+	@Autowired
+	private UserRepository userRepository;
 
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        if (user.getRoles().contains("ADMIN")) {
-            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        } else {
-            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-        }
+	
+	 @Autowired private IUserService userService;
+	 
 
-        // Construcción del objeto UserDetails con roles configurados
-        return new org.springframework.security.core.userdetails.User(
-            user.getUserName(), user.getPassword(), authorities);
-    }
+	@Override
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+		User user = userRepository.findByUserName(userName);
+		if (user == null) {
+			throw new UsernameNotFoundException("User not found with username: " + userName);
+		}
+
+		List<GrantedAuthority> authorities = new ArrayList<>();
+		if (user.getRoles().contains("ADMIN")) {
+			authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		} else {
+			authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+		}
+
+		return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(),
+				authorities);
 	}
-
-
-
-
-
+}

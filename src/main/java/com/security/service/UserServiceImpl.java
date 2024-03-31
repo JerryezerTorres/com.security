@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.security.entity.User;
@@ -14,10 +15,17 @@ public class UserServiceImpl implements IUserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	@Override
 	public void save(User user) {
-		userRepository.save(user);	
+		String encodedPassword = passwordEncoder.encode(user.getPassword());
+		user.setPassword(encodedPassword);
+		
+		userRepository.save(user);
+
 	}
 
 	@Override
@@ -33,13 +41,13 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public void delete(Long id) {
 		userRepository.deleteById(id);
-		
+
 	}
 
 	@Override
 	public User findByUserName(String userName) {
 		return userRepository.findByUserName(userName);
-		
+
 	}
 
 }
