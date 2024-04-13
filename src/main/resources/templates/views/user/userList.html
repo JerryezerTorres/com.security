@@ -11,46 +11,40 @@
 				<table class="table container mt-2">
 			<thead>
 				<tr>
+					<th scope="col">Foto</th>
 					<th scope="col">Id</th>
 					<th scope="col">Nombre</th>
 					<th scope="col">Apellido</th>
 					<th scope="col">Email</th>
 					<th scope="col">Direccion</th>
-					<th scope="col">Telefono</th>
-					<th scope="col">Nombre de Usuario</th>
-					<th scope="col">Contrasena</th>
-					<th scope="col">Foto</th>
+					<th scope="col">Telefono</th>					
 					<th scope="col">Editar</th>
 					<th scope="col">Eliminar</th>
 					<th scope="col">Mascotas</th>
-
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="u:${userList}">
-				
-					
 					<th><img th:src="@{'/images/' + ${u.image}}"
 						class="rounded-circle rounded mx-auto d-block" alt="..."
-						width="40" height="40"></th> 
-					<th scope="row" th:text="${u.id}">1</th>
+						width="40" height="40"></th>  
+					<th scope="row" th:text="${u.id}">1</th>				
 					<td th:text="${u.name}">Mark</td>
 					<td th:text="${u.lastName}">Mark</td>
 					<td th:text="${u.email}">Mark</td>
 					<td th:text="${u.direction}">Mark</td>
-					<td th:text="${u.telephone}">Mark</td>
-					<td th:text="${u.userName}">Mark</td>
-					<td th:text="${u.password}">Mark</td>
-					
+					<td th:text="${u.telephone}">Mark</td>		
 				 	<td><a class="btn btn-success btn-sm"
 						th:href="@{/views/user/edit/} + ${u.id}"
 						th:text="'Editar Usuario'" tittle="Editar Usuario"> </a></td>
 					 <td><a class="btn btn-danger btn-sm"
 						th:href="@{/views/user/delete/} + ${u.id}"
 						th:text="'Borrar Usuario'" tittle="Eliminar Usuario"
-						onclick="return confirm ('Est�s seguro de Eliminar el registro?');">
+						onclick="return confirm ('Estás seguro de Eliminar el registro?');">
 					</a></td>
-					<td><a class="btn btn-info btn-sm" th:text="'Ver Mascota'"
+					<td><a class="btn btn-info btn-sm" 
+						th:href="@{/views/user/showPet/} + ${u.id}"
+						th:text="'Ver Mascota'"
 						tittle="Ver Mascota"> </a></td>  
 				</tr>
 			</tbody>

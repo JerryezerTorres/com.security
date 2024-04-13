@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,35 +26,30 @@ public class RegisterController {
 	@Autowired
 	private IUserService userService;
 	
+//	@Autowired
+//	private PasswordEncoder passwordEncoder;
 	
 
 	@GetMapping("/create")
 	public String create(Model model) {
 		User user = new User();
 		model.addAttribute("title", "Registrarse");
-		
 		model.addAttribute("user", user);
-		System.out.println("metodo create " + user);
 
 		return "/views/user/create";
 	}
 
 	@PostMapping("/save")
-	public String save(@Valid @ModelAttribute User user, BindingResult result, Model model,
-			RedirectAttributes attribute) {
-		System.out.println("metodo save " + user);
-		// , @RequestParam("file") MultipartFile imagen
+	public String save(@Valid @ModelAttribute User user, BindingResult result, Model model, RedirectAttributes attribute) {
 
 		if (result.hasErrors()) {
-			System.out.println("metodo save 2 " + user.toString());
 			model.addAttribute("user", user);
 			
-			return "/views/user/create";
-			
+			return "/views/user/create";	
 		}
 		
 		userService.save(user);
-
+		attribute.addFlashAttribute("success", "Usuario guardado con exito");
 		return "redirect:/";
 
 	}

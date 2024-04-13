@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.security.entity.Pet;
 import com.security.entity.User;
+import com.security.service.IPetService;
 import com.security.service.IUserService;
 
 @Controller
@@ -23,6 +25,10 @@ public class UserListController {
 	
 	@Autowired
 	private IUserService userService;
+	
+	
+	@Autowired
+	private IPetService petService;
 	
 	@GetMapping("/userList")
 	public String userList(Model model) {
@@ -34,6 +40,21 @@ public class UserListController {
 		return "/views/user/userList";
 		
 	}
+	
+//AQUI HAY UN PROBLEMA ENTRE LA LAISTA DE USUARIOS Y DE MASCOTAS.......................................	
+//	@GetMapping("/showPet/{id}")
+//	public String showPet(@PathVariable ("id")   Long id, Model model) {
+//		
+//		Optional<Pet> pet = petService.findById(id);
+//		model.addAttribute("pet", pet.get());
+//	
+//		System.out.println(pet.get());
+//		//System.out.println(pet.get());
+//		return "/views/user/showPet";
+//		
+//	}
+	
+
 	
 
 

@@ -14,6 +14,7 @@ encoding//src/main/resources/templates/views/service/bookingCalendar.html=UTF-8
 encoding//src/main/resources/templates/views/service/completePackage.html=UTF-8
 encoding//src/main/resources/templates/views/service/teethCleaning.html=UTF-8
 encoding//src/main/resources/templates/views/user/create.html=UTF-8
+encoding//src/main/resources/templates/views/user/login.html=UTF-8
 encoding//src/main/resources/templates/views/user/userList.html=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

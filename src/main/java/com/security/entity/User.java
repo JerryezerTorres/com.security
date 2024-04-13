@@ -14,8 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
 @Table(name="user")
 @Entity
 public class User implements Serializable {
@@ -37,7 +35,7 @@ public class User implements Serializable {
 	
 	@Column(columnDefinition = "TINYINT(1)")
 	private boolean enabled;
-	private String roles;
+	private String roles = "USER";
 
 	
 	
@@ -159,39 +157,5 @@ public class User implements Serializable {
 				+ direction + ", telephone=" + telephone + ", userName=" + userName + ", password=" + password
 				+ ", image=" + image + ", enabled=" + enabled + ", roles=" + roles + ", pet=" + pet + "]";
 	}
-
-	
-//	@Transient
-//    private static PasswordEncoder passwordEncoder;
-//
-//    @Autowired
-//    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
-//        User.passwordEncoder = passwordEncoder;
-//    }
-//
-//    public static User createUser(String username, String password) {
-//        User user = new User();
-//        user.setUserName(username);
-//        user.setPassword(passwordEncoder.encode(password));
-//        // Otros campos y configuraciones necesarios
-//        return user;
-//    }
-
-
-	
-
-
-	
-	
-
-
-
-
-	
-	
-	
-	
-	
-	
 
 }

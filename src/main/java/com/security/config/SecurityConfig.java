@@ -22,42 +22,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	String[] resources = new String[]{ "/include/**","/css/**","/icons/**","/images/**","/js/**" };
 	
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests()
-            .antMatchers("/").permitAll()
-            .regexMatchers("/admin/.").hasRole("ADMIN")
-            .regexMatchers("/user/.*").authenticated()
-            	.antMatchers(resources).permitAll()
-            	.antMatchers("/").permitAll()
-            	.antMatchers("/views/user/create").permitAll()
-//            	.antMatchers("/views/pet/create").permitAll()
-            	.antMatchers("/views/service/aboutUs").permitAll()
-            	.antMatchers("/views/user/login").permitAll()
-            	.antMatchers("/views/admin/admin").permitAll()
-            	.antMatchers("/views/user/userList").permitAll()
-//            	
-                .antMatchers("/views/service/bookAppointment").permitAll()
- //               .antMatchers("/views/user/logout").permitAll()
- //               .antMatchers("/admin/**").access ("hasRole ('USER')")
-                .anyRequest().authenticated()
-                .and()
-            .formLogin()
- //               .loginPage("/views/user/login")
-                .defaultSuccessUrl("/") 
-                .permitAll()
-                .and()
-            .logout()
-            .logoutUrl("/logout") // Endpoint de logout
-            .logoutSuccessUrl("/login?logout") // URL de redirección después de cerrar sesión
-            .permitAll();
-    }
-    
-
-    
-
-    
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+	    http
+	        .authorizeRequests()
+	            .antMatchers("/").permitAll()
+	            .antMatchers(resources).permitAll()
+	            .antMatchers("/views/user/create").permitAll()
+	            .antMatchers("/views/user/creater").permitAll()
+	            .antMatchers("/views/service/aboutUs").permitAll()
+	            .antMatchers("/views/service/bookAppointment").permitAll()
+	            .anyRequest().authenticated()
+	         .and()
+	        .formLogin() .permitAll()
+	            .loginPage("/views/user/login")
+	            .defaultSuccessUrl("/")
+	            .permitAll()
+	            .and()
+	        .logout()
+	            .logoutUrl("/logout")
+	          //  .logoutSuccessUrl("/")
+	            .logoutSuccessUrl("/login?logout")
+	            .permitAll();
+	}
+   
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -82,17 +70,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
     
-    
-
-
-//    @Autowired
-//    public MyUserDetails myUserDetails(UserRepository userRepository) throws Exception {
-//        return new MyUserDetails(userRepository);
-//    }
-
-
-
-
-
 }
 

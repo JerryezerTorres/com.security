@@ -17,9 +17,8 @@
 			<form th:action="@{/views/user/login}" method="post"> 
 				<div class="mb-4 d-flex justify-content-center row">
 					<div class="col-sm-6 ">
- 						<input type="text" name="userName" class="form-control btn-lg rounded-pill text-center h6" placeholder="Username" id="userName" required>
-<!--  					<input type="text" name="username" class="form-control btn-lg rounded-pill text-center h6" placeholder="Username" id="username" required>
- -->					
+<!--  						<input type="text" name="userName" class="form-control btn-lg rounded-pill text-center h6" placeholder="Username" id="userName" required>
+ -->  					<input type="text" name="username" class="form-control btn-lg rounded-pill text-center h6" placeholder="Username" id="username" required>
 					</div>					
 				</div>
 				<div class="mb-4 d-flex justify-content-center row">
@@ -28,8 +27,9 @@
 					</div>
 				</div>
 				<div class="text-center">
-					<a href="#" class="text-decoration-none text-muted">Olvidó su contraseña?</a>
+				<a href="#" class="text-decoration-none text-muted text-center">Olvidó su contraseña?</a>
 				</div>
+					
 				<div class="mb-4 d-flex justify-content-center row">
 					<div class="col-sm-6 mt-3">
 						<input type="submit" class="form-control btn-lg rounded-pill text-muted "value="Entrar">
@@ -37,72 +37,12 @@
 				</div>
 			</form>
 			<div class="text-center text-decoration-none mb-4">
-			<a th:href="@{/views/user/create}" class=" text-decoration-none text-muted b">Si aún no tiene cuenta aquí puede registrarse</a>
+			<a th:href="@{/views/user/create}" class=" text-decoration-none text-muted b">Si aún no tiene cuenta, aquí puede registrarse</a>
 			</div>
 		</div>
 	</div>
-
-
-
-
-
-
-
-
-
 	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
 
 </body>
 </html>
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Iniciar Sesión</title>
-  Enlace a Bootstrap CSS
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="text-center">Iniciar Sesión</h3>
-          </div>
-          <div class="card-body">
-            <form>
-              <div class="mb-3">
-                <label for="usuario" class="form-label">Usuario</label>
-                <input type="text" class="form-control" id="usuario" placeholder="Ingresa tu usuario" required>
-              </div>
-              <div class="mb-3">
-                <label for="contrasena" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="contrasena" placeholder="Ingresa tu contraseña" required>
-              </div>
-              <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="recordar">
-                <label class="form-check-label" for="recordar">Recordar sesión</label>
-              </div>
-              <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  Enlace a Bootstrap JS (popper.js y Bootstrap JS)
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
- -->
