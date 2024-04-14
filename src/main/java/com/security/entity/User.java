@@ -36,32 +36,11 @@ public class User implements Serializable {
 	@Column(columnDefinition = "TINYINT(1)")
 	private boolean enabled;
 	private String roles = "USER";
-
-	
-	
-	public User() {
-		super();
-	}
-
-	public User(Long id, String name, String lastName, String email, String direction, String telephone,
-			String userName, String password, String image, boolean enabled, String roles, List<Pet> pet) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.lastName = lastName;
-		this.email = email;
-		this.direction = direction;
-		this.telephone = telephone;
-		this.userName = userName;
-		this.password = password;
-		this.image = image;
-		this.enabled = enabled;
-		this.roles = roles;
-		this.pet = pet;
-	}
-
-	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
-	private List<Pet> pet;
+		
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Pet> pet;
+    
+    
 
 	public Long getId() {
 		return id;
@@ -151,11 +130,55 @@ public class User implements Serializable {
 		this.roles = roles;
 	}
 
+
+
+	public List<Pet> getPet() {
+		return pet;
+	}
+
+	public void setPet(List<Pet> pet) {
+		this.pet = pet;
+	}
+	public User() {
+		
+	}
+	
+	
+	public User(Long id, String name, String lastName, String email, String direction, String telephone,
+			String userName, String password, String image, boolean enabled, String roles, List<Pet> pet) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.lastName = lastName;
+		this.email = email;
+		this.direction = direction;
+		this.telephone = telephone;
+		this.userName = userName;
+		this.password = password;
+		this.image = image;
+		this.enabled = enabled;
+		this.roles = roles;
+		this.pet = pet;
+	}
+
+//	@Override
+//	public String toString() {
+//		return "User [id=" + id + ", name=" + name + ", lastName=" + lastName + ", email=" + email + ", direction="
+//				+ direction + ", telephone=" + telephone + ", userName=" + userName + ", password=" + password
+//				+ ", image=" + image + ", enabled=" + enabled + ", roles=" + roles + "]";
+//	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", lastName=" + lastName + ", email=" + email + ", direction="
 				+ direction + ", telephone=" + telephone + ", userName=" + userName + ", password=" + password
 				+ ", image=" + image + ", enabled=" + enabled + ", roles=" + roles + ", pet=" + pet + "]";
 	}
+	
+	
+
+ 
+	
+	
 
 }

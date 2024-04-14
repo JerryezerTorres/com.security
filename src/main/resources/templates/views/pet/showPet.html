@@ -7,28 +7,75 @@
 	<div th:replace="template_fragments/navbar :: navbar"></div>
 
 	<div class="container-fluid mt-5">
-		
-		
-<table class="table">
-  <thead >
-    <tr >
-      <th scope="col">id</th>
-      <th scope="col">name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr th:each="p:${pet}">
-    
-      <th th:text="${p.id}">1</th>
-      <td th:text="${p.name}">Mark</td>
 
-    </tr>
-    </tbody>
-    </table>
+
+
+
+<!-- 		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Foto</th>
+					<th scope="col">ID</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Raza</th>
+					<th scope="col">Tipo de Mascota</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="p : ${pet}">
+					<td th:text="${p.image}"></td>
+					<td th:text="${p.id}"></td>
+					<td th:text="${p.name}"></td>
+					<td th:text="${p.race}"></td>
+					<td th:text="${p.typeOfPet}"></td>
+				</tr>
+			</tbody>
+		</table> -->
 		
-		
-		
-		
+				<div class="container card mb-4" th:each="p:${pet}">
+			<div class="row">
+				<div class="col-4 text-center" >
+					<br><br> 
+			<!-- 		<img th:src="@{/images/{img} (img=${u.image})}"
+						class="rounded-circle rounded mx-auto d-block" alt="..."
+						width="200" height="200"> -->
+				</div>
+				<div class="col-6"  >
+					<br>
+					<div class="card mb-4"  >
+						<div class="card-body">
+						<h3 th:text="${p.name}"> </h3>
+						<br>
+							<div class="row"  >
+								
+								<dd class="col-sm-4">ID de la Mascota</dd>
+  								<dt class="col-sm-8" th:text="${p.id}"></dt>
+								
+								<dd class="col-sm-4">Nombre:</dd>
+  								<dt class="col-sm-8" th:text="  ${p.name}"></dt>		
+  								
+  								<dd class="col-sm-4">Raza:</dd>
+  								<dt class="col-sm-8" th:text="  ${p.race}"></dt>
+  								
+  								<dd class="col-sm-4">Tipo de Mascota:</dd>
+  								<dt class="col-sm-8" th:text="  ${p.typeOfPet}"></dt>
+  								
+  								<dd class="col-sm-4">Nombre de Usuario:</dd>
+  								<dt class="col-sm-8" th:text="${p.user.name}"></dt>
+  								<!-- <dt class="col-sm-8"    th:text="${p.user}"></dt> -->
+			<!-- th:each="u:${userList}" -->
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+
 	</div>
 	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>

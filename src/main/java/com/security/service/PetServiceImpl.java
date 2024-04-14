@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.security.entity.Pet;
+import com.security.entity.User;
 import com.security.repository.PetRepository;
 
 @Service
@@ -34,6 +35,12 @@ public class PetServiceImpl implements IPetService {
 	public void delete(Long id) {
 		petRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Pet> findActivePetsByUser(User user) {
+		  return petRepository.findByUserAndEnabled(user, true);
+		  
 	}
 
 }

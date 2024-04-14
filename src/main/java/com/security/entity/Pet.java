@@ -1,12 +1,16 @@
 package com.security.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Table(name="pet")
 @Entity
 public class Pet {
 	
@@ -19,9 +23,17 @@ public class Pet {
 	private String image;
 	
 	
-	 @ManyToOne
-	 @JoinColumn(name = "user_id")
-	private User owner;
+	@Column(columnDefinition = "TINYINT(1)")
+	private boolean enabled;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	
+//	 @ManyToOne
+//	 @JoinColumn(name = "user_id")
+//	private User owner;
 
 	public Long getId() {
 		return id;
@@ -47,14 +59,6 @@ public class Pet {
 		this.image = image;
 	}
 
-	public User getOwner() {
-		return owner;
-	}
-
-	public void setOwner(User owner) {
-		this.owner = owner;
-	}
-
 	public String getRace() {
 		return race;
 	}
@@ -70,12 +74,58 @@ public class Pet {
 	public void setTypeOfPet(String typeOfPet) {
 		this.typeOfPet = typeOfPet;
 	}
+	
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public Pet () {
+		
+	}
+
+
+	public Pet(Long id, String name, String race, String typeOfPet, String image, boolean enabled, User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.race = race;
+		this.typeOfPet = typeOfPet;
+		this.image = image;
+		this.enabled = enabled;
+		this.user = user;
+	}
 
 	@Override
 	public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", race=" + race + ", typeOfPet=" + typeOfPet + ", image=" + image
-				+ ", owner=" + owner + "]";
+				+ ", enabled=" + enabled + "]";
 	}
+	
+	
+
+//	@Override
+//	public String toString() {
+//		return "Pet [id=" + id + ", name=" + name + ", race=" + race + ", typeOfPet=" + typeOfPet + ", image=" + image
+//				+ ", enabled=" + enabled + ", user=" + user + "]";
+//	}
+	
+	
+
+
 	
 	
 	

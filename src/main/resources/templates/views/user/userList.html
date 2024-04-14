@@ -43,9 +43,13 @@
 						onclick="return confirm ('Estás seguro de Eliminar el registro?');">
 					</a></td>
 					<td><a class="btn btn-info btn-sm" 
-						th:href="@{/views/user/showPet/} + ${u.id}"
+						th:href="@{/views/pet/showPet/{id}(id=${u.id})}"
 						th:text="'Ver Mascota'"
 						tittle="Ver Mascota"> </a></td>  
+						<!-- th:href="@{/views/user/showPet/} + ${u.id}" -->
+				
+
+						
 				</tr>
 			</tbody>
 		</table>

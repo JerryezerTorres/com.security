@@ -42,24 +42,25 @@ public class LoginController {
 
 	}
 
-	@PostMapping("/login")
-	public String login(@RequestParam String username, @RequestParam String password, RedirectAttributes redirectAttributes) {
-	    Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
-
-	    try {
-	        Authentication authenticated = authenticationManager.authenticate(authentication);
-
-	        SecurityContextHolder.getContext().setAuthentication(authenticated);
-
-	        return "redirect:/";
-	    } catch (AuthenticationException e) {
-	        redirectAttributes.addFlashAttribute("error", "Nombre de usuario o contraseña incorrectos");
-	        System.out.println("Estoy fuera del try");
-	        return "redirect:/views/user/login";
-	    }
-	    
-	}
-
+//ESTE CONTROLADOR AL PARECER NO ESTA FUNCIONANDO, SINO QUE PARECE QUE SPRING ES EL QUE ESTA GESTIONANDO EL LOGUEO	
+//	@PostMapping("/login")
+//	public String login(@RequestParam String username, @RequestParam String password, RedirectAttributes redirectAttributes) {
+//	    Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
+//
+//	    try {
+//	        Authentication authenticated = authenticationManager.authenticate(authentication);
+//
+//	        SecurityContextHolder.getContext().setAuthentication(authenticated);
+//
+//	        return "redirect:/";
+//	    } catch (AuthenticationException e) {
+//	        redirectAttributes.addFlashAttribute("error", "Nombre de usuario o contraseña incorrectos");
+//	        System.out.println("Estoy fuera del try");
+//	        return "redirect:/views/user/login";
+//	    }
+//	    
+//	}
+	
 
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response) {

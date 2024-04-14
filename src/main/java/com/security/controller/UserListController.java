@@ -36,7 +36,8 @@ public class UserListController {
 		List<User> userList = userService.findAll();
 		model.addAttribute("userList", userList);
 		
-		System.out.println(userList); 		
+		System.out.println(userList); 
+		System.out.println(petService.toString());
 		return "/views/user/userList";
 		
 	}
@@ -53,6 +54,22 @@ public class UserListController {
 //		return "/views/user/showPet";
 //		
 //	}
+	
+	
+	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//	@GetMapping("/showPet/{id}")
+//	public String showPet(@PathVariable("id") Long id, Model model) {
+//	    Optional<Pet> optionalPet = petService.findById(id);
+//	    if (optionalPet.isPresent()) {
+//	        Pet pet = optionalPet.get();
+//	        model.addAttribute("pet", pet);
+//	        return "/views/pet/showPet";
+//	    } else {
+//	        // Manejar el caso en que la mascota no se encuentre
+//	        return "error"; // Por ejemplo, redirigir a una página de error
+//	    }
+//	}
+
 	
 
 	
